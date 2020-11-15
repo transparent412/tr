@@ -1,0 +1,435 @@
+@mixin font($font_name, $file_name, $weight, $style) {
+	@font-face {
+		font-family: $font_name;
+		font-display: swap;
+		src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2");
+		font-weight: #{$weight};
+		font-style: #{$style};
+	}
+}
+
+@import "fonts.scss";
+@import "reset.scss";
+
+$minwidth: 320px;
+$mw: 1600;
+$mwcontainer: 1177;
+$md1: $mwcontainer + 12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+
+._container {
+	display: flex;
+	max-width: $mwcontainer + px;
+	margin: 0 auto;
+	@media (max-width: $md1+px) {
+		max-width: 970px;
+	}
+
+	@media (max-width: $md2+px) {
+		max-width: 750px;
+	}
+
+	@media (max-width: $md3+px) {
+		max-width: none;
+		padding: 0 10px;
+	}
+}
+
+body {
+	font-family: "Lato", sans-serif;
+	min-height: 100%;
+	display: grid;
+	grid-template-rows: 1fr auto;
+}
+
+.header {
+	color: white;
+	background-color: black;
+	background-image: url(/img/header/bg-header.png);
+	background-size: cover;
+
+	&__container {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__menu {
+		@media (max-width: 620px) {
+			display: none;
+		}
+		flex: 0 1 50%;
+		margin: 27px 0px 0px 0px;
+	}
+
+	&__body {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	&__logo {
+		margin: 61px 0px 29px 0px;
+		@media (max-width: 400px) {
+			img {
+				width: 150px;
+				height: 100px;
+			}
+		}
+		@media (max-width: 400px) {
+			margin: 60px 0px 29px 0px;
+		}
+	}
+	&__suptitle {
+		font-size: 28px;
+		font-weight: bold;
+		letter-spacing: -0.7px;
+		@media (max-width: 720px) {
+			font-size: 23px;
+		}
+		&:after {
+			content: "";
+			display: block;
+			width: 100px;
+			height: 2px;
+			background: #fff;
+			margin: 15px auto 0;
+		}
+	}
+
+	&__subtitle {
+		margin: 15px auto 0px;
+		font-size: 14px;
+		font-weight: 400;
+		letter-spacing: -0.35px;
+		line-height: 1.5;
+		max-width: 833px;
+		@media (max-width: 720px) {
+			font-size: 12px;
+		}
+	}
+
+	&__mouse {
+		margin: 85px 0px 30px 0px;
+	}
+}
+
+.menu {
+	&__list {
+		display: flex;
+		li {
+			margin: 0px 17px 0px 17px;
+			@media (max-width: 1000px) {
+				margin: 0px 12px 0px 12px;
+			}
+			&:nth-child(1) {
+				@media (max-width: 1000px) {
+					margin: 0px 12px 0px 0px;
+				}
+				margin: 0px 17px 0px 0px;
+			}
+			&:last-child {
+				@media (max-width: 1000px) {
+					margin: 0px 0px 0px 12px;
+				}
+				margin: 0px 0px 0px 17px;
+			}
+		}
+	}
+
+	&__link {
+		color: white;
+		letter-spacing: -0.45px;
+		font-weight: 400;
+		font-size: 18px;
+		transition: 0.2s color linear;
+		@media (max-width: 720px) {
+			font-size: 15px;
+		}
+		&:hover {
+			color: #ffd900;
+			border-bottom: 1px solid #ffd900;
+			transition: opacity 0.2s linear;
+		}
+	}
+}
+// Примеры оборудования \\
+.equip {
+	background-color: #fffcf4;
+	&__container {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__wrapper {
+		display: flex;
+		justify-content: space-between;
+		&_mrg {
+			margin: 43px 0px 0px 0px;
+		}
+	}
+
+	&__text {
+		max-width: 629px;
+		p {
+			margin: 0px 0px 24px 0px;
+			&:last-child {
+				margin: 0px 0px 0px 0px;
+			}
+		}
+
+		&_mm {
+			margin: 62px 0px 0px 0px;
+		}
+	}
+
+	&__photo {
+		&_mt {
+			margin: 153px 0px 0px 0px;
+		}
+	}
+
+	&__line-block {
+		width: 100%;
+		height: 1px;
+		background-color: #a8a8a8;
+		margin: 20px 0px 0px 0px;
+		opacity: 0.2;
+	}
+}
+
+.text {
+	&__title {
+		color: #1d1d1d;
+		font-size: 42px;
+		font-weight: bold;
+		letter-spacing: -1.05px;
+		white-space: pre;
+		&:after {
+			content: "";
+			display: block;
+			width: 100px;
+			height: 2px;
+			background: #000;
+			margin: 20px 0px 0px 0px;
+		}
+	}
+
+	&__info {
+		margin: 40px 0px 0px 0px;
+		color: #1d1d1d;
+		font-size: 14px;
+		letter-spacing: -0.35px;
+	}
+
+	&__button-block {
+		margin: 54px 0px 0px 0px;
+	}
+}
+
+// Почему мы там все дела никто не знает но мы проолжаем делать какую-то херню \\
+
+.about-us {
+	background-image: url(../img/about/fon.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: black;
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__left {
+		width: 0;
+		height: 0;
+		border-top: 294px solid #ffd900;
+		position: absolute;
+		border-right: 258px solid transparent;
+		transform: translate(0px, -23px);
+	}
+
+	&__right {
+		width: 0;
+		height: 0;
+		position: absolute;
+		right: 0;
+		border-bottom: 294px solid #ffd900;
+		border-left: 258px solid transparent;
+		transform: translate(0px, -273px);
+	}
+
+	&__block-title {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		color: #ffd900;
+		font-size: 42px;
+		font-weight: bold;
+		letter-spacing: -1.05px;
+		margin: 47px 0px 0px 0px;
+		&:after {
+			content: "";
+			display: block;
+			width: 100px;
+			height: 2px;
+			background: #ffd900;
+			margin: 15px auto 0;
+		}
+	}
+
+	&__wrapper-block {
+		display: flex;
+		padding: 126px 0px 100px 0px;
+		color: white;
+		text-align: center;
+		align-items: center;
+		justify-content: space-between;
+	}
+}
+
+.block {
+	&__image {
+	}
+
+	&__text {
+		max-width: 220px;
+	}
+}
+.about-text {
+	&__title {
+		font-size: 30px;
+		font-weight: bold;
+		// Text style for "П, ерсонал"
+		letter-spacing: -0.75px;
+		margin: 18px 0px 18px 0px;
+		&:after {
+			content: "";
+			display: block;
+			width: 40px;
+			height: 2px;
+			color: white;
+			margin: 0 auto;
+		}
+	}
+
+	&__infa {
+		font-weight: 400;
+		font-size: 16px;
+	}
+}
+
+// Наше портфолио
+
+.portfolio {
+	background-color: #fffcf4;
+	&__container {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__img {
+		display: flex;
+		flex-wrap: wrap;
+		position: relative;
+		text-align: center;
+		justify-content: center;
+		padding: 0px 0px 40px 0px;
+	}
+
+	&__wrapper-title {
+		display: flex;
+		justify-content: center;
+		&:after {
+			content: "";
+			display: block;
+			width: 380px;
+			height: 1px;
+			background-color: #a8a8a8;
+			margin: auto 0 auto 24px;
+		}
+		&:before {
+			content: "";
+			display: block;
+			width: 380px;
+			height: 1px;
+			background-color: #a8a8a8;
+			margin: auto 24px auto 0px;
+		}
+	}
+
+	&__title {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		color: #1d1d1d;
+		font-size: 42px;
+		font-weight: bold;
+		letter-spacing: -1.05px;
+		margin: 55px 0px 40px 0px;
+		&:after {
+			content: "";
+			display: block;
+			width: 100px;
+			height: 2px;
+			background: #000;
+			margin: 20px 0px 0px 0px;
+		}
+	}
+
+	&__images-block {
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+		vertical-align: middle;
+		width: 374px;
+		height: 280px;
+		float: left;
+		img {
+			width: 374px;
+			height: 280px;
+		}
+	}
+}
+
+// Контактный блок
+.contact {
+	&__container {
+		width: 80%;
+	}
+
+	&__info {
+		position: absolute;
+		z-index: 1;
+		transform: translate(0px, -25px);
+	}
+
+	&__map {
+		position: absolute;
+	}
+}
+
+.info {
+}
+
+// Футтер
+
+.footer {
+	background-color: black;
+	grid-row-start: 2;
+	grid-row-end: 4;
+	&__container {
+	}
+
+	&__number {
+	}
+
+	&__logo {
+	}
+
+	&__social {
+	}
+}
